@@ -4,13 +4,13 @@
 
 
 ## Project Structure:
-## ├── src/
-## │   ├── App/
-## │   │   ├── PersonManager.php
-## │   │   ├── CsvImporter.php
-## ├── commands.php
-## ├── composer.json
-## ├── vendor/
+** ├── src/**
+** │   ├── App/**
+** │   │   ├── PersonManager.php**
+** │   │   ├── CsvImporter.php**
+** ├── commands.php**
+** ├── composer.json**
+** ├── vendor/**
 
 * **src:** Contains the core application logic.
   * **App:** Namespace for application classes.
@@ -28,15 +28,15 @@
 
 ##   Install dependencies:
 Bash
-## cd your-repo
-## composer install
+** cd your-repo**
+** composer install**
 
 
 ## Usage
 Run the application:
 Bash
-## php commands.php
+** php commands.php**
 
 Run tests:
 Bash
-## vendor/bin/phpunit tests
+** vendor/bin/phpunit tests**

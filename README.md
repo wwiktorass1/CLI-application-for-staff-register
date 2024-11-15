@@ -34,10 +34,10 @@ composer install
 
 
 ## Usage
-###Run the application:
+**Run the application:
 Bash
 php commands.php
 
-###Run tests:
+**Run tests:
 Bash
 vendor/bin/phpunit tests

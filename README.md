@@ -28,15 +28,15 @@
 
 ##   Install dependencies:
 Bash
-** cd your-repo**
-** composer install**
+ cd your-repo
+ composer install
 
 
 ## Usage
 Run the application:
 Bash
-** php commands.php**
+## php commands.php
 
 Run tests:
 Bash
-** vendor/bin/phpunit tests**
+## vendor/bin/phpunit tests

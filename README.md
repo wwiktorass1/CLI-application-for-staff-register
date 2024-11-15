@@ -4,13 +4,13 @@
 
 
 ## Project Structure:
-* ** ├── src/
-* ** │   ├── App/
-* ** │   │   ├── PersonManager.php
-* ** │   │   ├── CsvImporter.php
-* ** ├── commands.php
-* ** ├── composer.json
-* ** ├── vendor/
+* **├── src/
+* **│   ├── App/
+* **│   │   ├── PersonManager.php
+* **│   │   ├── CsvImporter.php
+* **├── commands.php
+* **├── composer.json
+* **├── vendor/
 
 * **src:** Contains the core application logic.
   * **App:** Namespace for application classes.

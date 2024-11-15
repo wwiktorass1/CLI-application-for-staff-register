@@ -2,9 +2,8 @@
 
 **A simple PHP application for managing employee data.**
 
-## Project Structure
 
-## Project Structure
+## Project Structure:
 ## ├── src/
 ## │   ├── App/
 ## │   │   ├── PersonManager.php

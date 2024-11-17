@@ -1,16 +1,35 @@
 # CLI-application-for-staff-register
 
-**A simple PHP application for managing employee data.**
+A simple command-line-based staff management system for handling employee data. This application allows you to:
+
+* Add new employees.
+* Delete employees.
+* Search for employees by email.
+* Import employee data from CSV files.
+* View a list of all employees.
+Data is stored in an SQLite database.
 
 
-## Project Structure:
-* ├── src/
-* │   ├── App/
-* │   │   ├── PersonManager.php
-* │   │   ├── CsvImporter.php
-* ├── commands.php
-* ├── composer.json
-* ├── vendor/
+# Requirements
+* PHP 7.4 or later.
+* Composer.
+* SQLite.
+
+
+# Project Structure:
+staff-register/
+├── src/
+│   ├── App/
+│   │   ├── CsvImporter.php        # Logic for importing CSV files
+│   │   ├── PersonManager.php      # Logic for managing staff data
+├── tests/
+│   ├── CsvImporterTest.php        # Unit tests for CSV importing
+│   ├── PersonManagerTest.php      # Unit tests for staff management
+├── vendor/                        # Composer dependencies
+├── commands.php                   # Main CLI entry point
+├── composer.json                  # Composer configuration
+├── staff.db                       # SQLite database
+
 
 * **src:** Contains the core application logic.
   * **App:** Namespace for application classes.

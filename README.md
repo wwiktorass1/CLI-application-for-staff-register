@@ -97,7 +97,7 @@ Bash
 * Implement phone number validation:
 ###  * Ensure numbers follow international formats (e.g., +37061234567). 
 ###  * Validate numbers against specific country patterns. 
-###  * Provide detailed error messages, e.g., "Too short" or "Invalid prefix."**
+###  * Provide detailed error messages, e.g., "Too short" or "Invalid prefix."
 **API Development**
 * Create a RESTful API for easier integration and remote access.
 **Database Enhancements**

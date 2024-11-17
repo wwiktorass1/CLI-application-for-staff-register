@@ -37,12 +37,14 @@ staff-register/
 1. **Clone the repository:**
    ```bash
    git clone [https://github.com/wwiktorass1/CLI-application-for-staff-register.git](https://github.comwwiktorass1/CLI-application-for-staff-register.git)
+   ```
 
 
 ##   Install dependencies:
-Bash
+```Bash
  cd your-repo
  composer install
+```
 
  ##  Verify PHP version
 Bash
@@ -55,8 +57,9 @@ php -v
 
 ## Usage
 Run the application:
-Bash
-## php commands.php
+```Bash
+ php commands.php
+```
 
 Menu Options
 * Add a new employee: Allows you to input a new employee's details.
@@ -81,9 +84,9 @@ Bash
 * The CSV file must include a header row:
 
   ## Example CSV file
-**firstname;lastname;email;phonenumber1;phonenumber2;comment**
-**Jonas;Jonaitis;jonas@example.com;+37061234567;;Programmer**
-**Petras;Petraitis;petras@example.com;+37061234568;;Lawyer**
+### firstname;lastname;email;phonenumber1;phonenumber2;comment
+### Jonas;Jonaitis;jonas@example.com;+37061234567;;Programmer**
+### Petras;Petraitis;petras@example.com;+37061234568;;Lawyer**
 
 # Potential Improvements
 
@@ -92,9 +95,9 @@ Bash
 * Add support for UTF-8 files with BOM.
 **Phone Number Validation**
 * Implement phone number validation:
-** * Ensure numbers follow international formats (e.g., +37061234567). **
-** * Validate numbers against specific country patterns. **
-** * Provide detailed error messages, e.g., "Too short" or "Invalid prefix."**
+###  * Ensure numbers follow international formats (e.g., +37061234567). 
+###  * Validate numbers against specific country patterns. 
+###  * Provide detailed error messages, e.g., "Too short" or "Invalid prefix."**
 **API Development**
 * Create a RESTful API for easier integration and remote access.
 **Database Enhancements**

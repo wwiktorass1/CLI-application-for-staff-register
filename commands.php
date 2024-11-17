@@ -32,6 +32,10 @@ while (true) {
             $lastname = trim(fgets(STDIN));
             echo "Enter email: ";
             $email = trim(fgets(STDIN));
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                echo "Invalid email format. Please try again." . PHP_EOL;
+                continue 2;
+            }
             echo "Enter phone number 1: ";
             $phonenumber1 = trim(fgets(STDIN));
             echo "Enter phone number 2 (optional): ";
@@ -79,18 +83,24 @@ while (true) {
 
         case '4':
             echo "Enter the path to the CSV file: ";
-            $filename = trim(fgets(STDIN));
-            try {
-                $result = $csvImporter->importCsv($filename);
-                echo "Imported successfully: " . $result['success'] . " persons.\n";
-                echo "Failed imports: " . $result['failed'] . ".\n";
-            } catch (Exception $e) {
-                echo "Error: " . $e->getMessage() . "\n";
+            $filePath = trim(fgets(STDIN));
+            if (!file_exists($filePath)) {
+                echo "Error: File does not exist.\n";
+                continue 2;
+            }
+
+            $result = $csvImporter->importCsv($filePath);
+            echo "Imported successfully: {$result['success']} persons." . PHP_EOL;
+            if ($result['failed'] > 0) {
+                echo "Failed to import: {$result['failed']} records." . PHP_EOL;
+                foreach ($result['failedRecords'] as $record) {
+                    echo "Row: [" . implode(", ", $record['row']) . "] - Reason: {$record['reason']}\n";
+                }
             }
             break;
 
         case '5':
-            $persons = $personManager->listAll();
+            $persons = $personManager->listAll(); 
             foreach ($persons as $person) {
                 echo implode(", ", $person) . "\n";
             }
@@ -102,5 +112,6 @@ while (true) {
 
         default:
             echo "Invalid choice. Please try again.\n";
+            break;
     }
 }

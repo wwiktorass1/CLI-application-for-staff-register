@@ -49,7 +49,7 @@ Bash
 php -v
 
 ## Prepare the SQLite database
-Create the staff.db file in the root directory if it doesn't already exist:
+* Create the staff.db file in the root directory if it doesn't already exist:
 **touch staff.db**
 
 

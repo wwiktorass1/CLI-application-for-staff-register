@@ -15,8 +15,8 @@ class CsvImporterTest extends TestCase
     {
         $this->db = new PDO('sqlite::memory:');
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->importer = new CsvImporter($this->db);
 
+        // Sukuriame lentelę duomenų bazėje
         $this->db->exec("
             CREATE TABLE staff (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,41 +28,91 @@ class CsvImporterTest extends TestCase
                 comment TEXT
             )
         ");
+
+        $this->importer = new CsvImporter($this->db);
     }
 
-    public function testImportCsv(): void
+    public function testValidCsvImport(): void
     {
-        $csvContent = "firstname,lastname,email,phonenumber1,phonenumber2,comment\n";
-        $csvContent .= "Jonas,Jonaitis,jonas@example.com,+37061234567,,Test\n";
-        $csvContent .= "Petras,Petraitis,petras@example.com,+37061234568,,Test\n";
+        $csvContent = "firstname;lastname;email;phonenumber1;phonenumber2;comment\n";
+        $csvContent .= "Jonas;Jonaitis;jonas@example.com;+37061234567;;Programuotojas\n";
+        $csvContent .= "Petras;Petraitis;petras@example.com;+37061234568;;Analitikas\n";
 
-        $tempFile = tempnam(sys_get_temp_dir(), 'csv');
-        file_put_contents($tempFile, $csvContent);
+        $filePath = tempnam(sys_get_temp_dir(), 'csv');
+        file_put_contents($filePath, $csvContent);
 
-        $result = $this->importer->importCsv($tempFile);
+        $result = $this->importer->importCsv($filePath, ';');
 
         $this->assertEquals(2, $result['success']);
         $this->assertEquals(0, $result['failed']);
 
-        unlink($tempFile);
+        unlink($filePath);
     }
 
-    public function testImportCsvWithDuplicates(): void
+    public function testCsvWithInvalidEmail(): void
     {
-        $csvContent = "firstname,lastname,email,phonenumber1,phonenumber2,comment\n";
-        $csvContent .= "Jonas,Jonaitis,jonas@example.com,+37061234567,,Test\n";
-        $csvContent .= "Jonas,Jonaitis,jonas@example.com,+37061234567,,Test\n";
+        $csvContent = "firstname;lastname;email;phonenumber1;phonenumber2;comment\n";
+        $csvContent .= "Jonas;Jonaitis;invalid-email;+37061234567;;Programuotojas\n";
 
-        $tempFile = tempnam(sys_get_temp_dir(), 'csv');
-        file_put_contents($tempFile, $csvContent);
+        $filePath = tempnam(sys_get_temp_dir(), 'csv');
+        file_put_contents($filePath, $csvContent);
 
-        $result = $this->importer->importCsv($tempFile);
+        $result = $this->importer->importCsv($filePath, ';');
+
+        $this->assertEquals(0, $result['success']);
+        $this->assertEquals(1, $result['failed']);
+        $this->assertEquals('Invalid email format', $result['failedRecords'][0]['reason']);
+
+        unlink($filePath);
+    }
+
+    public function testCsvWithDuplicateEmail(): void
+    {
+        $csvContent = "firstname;lastname;email;phonenumber1;phonenumber2;comment\n";
+        $csvContent .= "Jonas;Jonaitis;duplicate@example.com;+37061234567;;Programuotojas\n";
+        $csvContent .= "Petras;Petraitis;duplicate@example.com;+37061234568;;Analitikas\n";
+
+        $filePath = tempnam(sys_get_temp_dir(), 'csv');
+        file_put_contents($filePath, $csvContent);
+
+        $result = $this->importer->importCsv($filePath, ';');
 
         $this->assertEquals(1, $result['success']);
         $this->assertEquals(1, $result['failed']);
+        $this->assertEquals('Duplicate email', $result['failedRecords'][0]['reason']);
 
-        unlink($tempFile);
+        unlink($filePath);
     }
-    
 
+    public function testCsvWithMissingFields(): void
+    {
+        $csvContent = "firstname;lastname;email;phonenumber1;phonenumber2;comment\n";
+        $csvContent .= "Jonas;Jonaitis;;+37061234567;;Programuotojas\n";
+
+        $filePath = tempnam(sys_get_temp_dir(), 'csv');
+        file_put_contents($filePath, $csvContent);
+
+        $result = $this->importer->importCsv($filePath, ';');
+
+        $this->assertEquals(0, $result['success']);
+        $this->assertEquals(1, $result['failed']);
+        $this->assertEquals('Missing required fields', $result['failedRecords'][0]['reason']);
+
+        unlink($filePath);
+    }
+
+    public function testEmptyCsvFile(): void
+    {
+        $csvContent = "";
+
+        $filePath = tempnam(sys_get_temp_dir(), 'csv');
+        file_put_contents($filePath, $csvContent);
+
+        $result = $this->importer->importCsv($filePath, ';');
+
+        $this->assertEquals(0, $result['success']);
+        $this->assertEquals(0, $result['failed']);
+
+        unlink($filePath);
+    }
 }

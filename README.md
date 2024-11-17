@@ -95,9 +95,9 @@ Bash
 * Add support for UTF-8 files with BOM.
 **Phone Number Validation**
 * Implement phone number validation:
-###  * Ensure numbers follow international formats (e.g., +37061234567). 
-###  * Validate numbers against specific country patterns. 
-###  * Provide detailed error messages, e.g., "Too short" or "Invalid prefix."
+###   Ensure numbers follow international formats (e.g., +37061234567). 
+###   Validate numbers against specific country patterns. 
+###   Provide detailed error messages, e.g., "Too short" or "Invalid prefix."
 **API Development**
 * Create a RESTful API for easier integration and remote access.
 **Database Enhancements**
@@ -111,4 +111,4 @@ Bash
 
 
   # Author
-Developed by Viktoras.
+Developed by **Viktoras**.

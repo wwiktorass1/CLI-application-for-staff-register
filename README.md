@@ -20,15 +20,15 @@ Data is stored in an SQLite database.
 staff-register/
 * ├── src/
 * │   ├── App/
-* │   │   ├── CsvImporter.php           Logic for importing CSV files
-* │   │   ├── PersonManager.php       Logic for managing staff data
+* │   │   ├── CsvImporter.php           **Logic for importing CSV files**
+* │   │   ├── PersonManager.php       **Logic for managing staff data**
 * ├── tests/
-* │   ├── CsvImporterTest.php           Unit tests for CSV importing
-* │   ├── PersonManagerTest.php       Unit tests for staff management
-* ├── vendor/                                    Composer dependencies
-* ├── commands.php                             Main CLI entry point
-* ├── composer.json                        Composer configuration
-* ├── staff.db                                    SQLite database
+* │   ├── CsvImporterTest.php           **Unit tests for CSV importing**
+* │   ├── PersonManagerTest.php       **Unit tests for staff management**
+* ├── vendor/                                    **Composer dependencies**
+* ├── commands.php                             **Main CLI entry point**
+* ├── composer.json                        **Composer configuration**
+* ├── staff.db                                    **SQLite database**
 
 
 
@@ -47,8 +47,9 @@ staff-register/
 ```
 
  ##  Verify PHP version
-Bash
+```Bash
 php -v
+```
 
 ## Prepare the SQLite database
 * Create the staff.db file in the root directory if it doesn't already exist:
@@ -72,8 +73,8 @@ Menu Options
 
 
 Run tests:
-Bash
-## vendor/bin/phpunit tests
+```Bash
+## vendor/bin/phpunit tests```
 
 **Expected results**
 * Tests should pass without any errors.

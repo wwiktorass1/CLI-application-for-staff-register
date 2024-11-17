@@ -20,15 +20,15 @@ Data is stored in an SQLite database.
 staff-register/
 * ├── src/
 * │   ├── App/
-* │   │   ├── CsvImporter.php        # Logic for importing CSV files
-* │   │   ├── PersonManager.php      # Logic for managing staff data
+* │   │   ├── CsvImporter.php         Logic for importing CSV files
+* │   │   ├── PersonManager.php       Logic for managing staff data
 * ├── tests/
-* │   ├── CsvImporterTest.php        # Unit tests for CSV importing
-* │   ├── PersonManagerTest.php      # Unit tests for staff management
-* ├── vendor/                        # Composer dependencies
-* ├── commands.php                   # Main CLI entry point
-* ├── composer.json                  # Composer configuration
-* ├── staff.db                       # SQLite database
+* │   ├── CsvImporterTest.php         Unit tests for CSV importing
+* │   ├── PersonManagerTest.php       Unit tests for staff management
+* ├── vendor/                         Composer dependencies
+* ├── commands.php                    Main CLI entry point
+* ├── composer.json                   Composer configuration
+* ├── staff.db                        SQLite database
 
 
 * **src:** Contains the core application logic.

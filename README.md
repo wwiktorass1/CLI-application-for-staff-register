@@ -17,7 +17,7 @@ Data is stored in an SQLite database.
 
 
 # Project Structure:
-* staff-register/
+staff-register/
 * ├── src/
 * │   ├── App/
 * │   │   ├── CsvImporter.php        # Logic for importing CSV files

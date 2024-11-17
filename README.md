@@ -18,17 +18,17 @@ Data is stored in an SQLite database.
 
 # Project Structure:
 staff-register/
-* **├── src/**
-* **│   ├── App/**
-* **│   │   ├── CsvImporter.php**           Logic for importing CSV files
-* **│   │   ├── PersonManager.php**       Logic for managing staff data
-* **├── tests/**
-* **│   ├── CsvImporterTest.php**           Unit tests for CSV importing
-* **│   ├── PersonManagerTest.php**       Unit tests for staff management
-* **├── vendor/**                                    Composer dependencies
-* **├── commands.php**                             Main CLI entry point
-* **├── composer.json**                        Composer configuration
-* **├── staff.db**                                    SQLite database
+ **├── src/**
+ **│   ├── App/**
+ **│   │   ├── CsvImporter.php**           Logic for importing CSV files
+ **│   │   ├── PersonManager.php**       Logic for managing staff data
+ **├── tests/**
+ **│   ├── CsvImporterTest.php**           Unit tests for CSV importing
+ **│   ├── PersonManagerTest.php**       Unit tests for staff management
+ **├── vendor/**                                    Composer dependencies
+ **├── commands.php**                             Main CLI entry point
+ **├── composer.json**                        Composer configuration
+ **├── staff.db**                                    SQLite database
 
 
 
@@ -85,28 +85,28 @@ Bash
 
   ## Example CSV file
 ### firstname;lastname;email;phonenumber1;phonenumber2;comment
-### Jonas;Jonaitis;jonas@example.com;+37061234567;;Programmer**
-### Petras;Petraitis;petras@example.com;+37061234568;;Lawyer**
+### Jonas;Jonaitis;jonas@example.com;+37061234567;;Programmer
+### Petras;Petraitis;petras@example.com;+37061234568;;Lawyer
 
 # Potential Improvements
 
-**vEnhanced CSV Parsing**
+### vEnhanced CSV Parsing
 * Automatically detect the delimiter (; or ,).
 * Add support for UTF-8 files with BOM.
-**Phone Number Validation**
+### Phone Number Validation
 * Implement phone number validation:
-###   Ensure numbers follow international formats (e.g., +37061234567). 
-###   Validate numbers against specific country patterns. 
-###   Provide detailed error messages, e.g., "Too short" or "Invalid prefix."
-**API Development**
+   **Ensure numbers follow international formats (e.g., +37061234567).** 
+   **Validate numbers against specific country patterns.**
+   **Provide detailed error messages, e.g., "Too short" or "Invalid prefix."**
+### API Development
 * Create a RESTful API for easier integration and remote access.
-**Database Enhancements**
+### Database Enhancements
 * Switch to MySQL or PostgreSQL for handling larger datasets.
-**Authentication**
+### Authentication
 * Add user authentication for CLI or API usage.
-**Additional Tests**
+### Additional Tests
 * Add tests for edge cases, such as empty files, special characters, or invalid data.
-**Improved CLI Interface**
+### Improved CLI Interface
 * Use interactive libraries like symfony/console to enhance user experience with features like colored messages and better input handling.
 
 
